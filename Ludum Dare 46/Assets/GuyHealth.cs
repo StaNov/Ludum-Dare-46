@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GuyHealth : MonoBehaviour
 {
-    private float _currentHealth = 100;
+    public float currentHealth = 100;
 
     public int healthPerSecondDecrement = 2;
 
     void Update()
     {
-        _currentHealth -= healthPerSecondDecrement * Time.deltaTime;
+        currentHealth -= healthPerSecondDecrement * Time.deltaTime;
 
-        if (_currentHealth < 0)
+        if (currentHealth < 0)
         {
             SceneManager.LoadScene(0);
         }
