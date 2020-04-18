@@ -18,14 +18,14 @@ public class CoordinatesHolder : MonoBehaviour
         for (int i = 0; i < xsHolder.childCount; i++)
         {
             Transform child = xsHolder.GetChild(i);
-            _xs[i] = child.position.x + 0.5f; // hack
+            _xs[i] = child.position.x + 0.9f; // hack
         }
         
         _ys = new float[ysHolder.childCount];
         for (int i = 0; i < ysHolder.childCount; i++)
         {
             Transform child = ysHolder.GetChild(i);
-            _ys[i] = child.position.y + 0.5f; // hack
+            _ys[i] = child.position.y + 0.7f; // hack
         }
 
         if (Math.Abs(Math.Abs(_xs[0]) - Math.Abs(_xs[1])) > 0.001)

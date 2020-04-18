@@ -24,7 +24,7 @@ public class FoodSpawner : MonoBehaviour
         {
             string[] coordinates = command.Split(',');
 
-            Instantiate(foodPrefab, new Vector2(int.Parse(coordinates[0]), int.Parse(coordinates[1])),
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(int.Parse(coordinates[0]), int.Parse(coordinates[1])),
                 Quaternion.identity);
         }
         catch (Exception ex)
@@ -39,9 +39,9 @@ public class FoodSpawner : MonoBehaviour
         if (holder.IsReady)
         {
             Instantiate(foodPrefab, holder.getPositionOfCoordinates(1, 1), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(2, 2), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(3, 3), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(4, 4), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(1, 12), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(20, 1), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(20, 12), Quaternion.identity);
         }
     }
 }
