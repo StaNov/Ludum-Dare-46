@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 7272492540355767227, guid: 6d636c7cb55ad49f69904bf9efdb2275,
     type: 3}
+  holder: {fileID: 1244228803}
 --- !u!4 &152585470
 Transform:
   m_ObjectHideFlags: 0
@@ -1046,6 +1047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xsHolder: {fileID: 1586967570}
   ysHolder: {fileID: 536065758}
+  isReady: 0
 --- !u!1 &1328456480
 GameObject:
   m_ObjectHideFlags: 0

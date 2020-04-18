@@ -1,36 +1,39 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoordinatesHolder : MonoBehaviour
 {
-    private float[] xs;
-    private float[] ys;
+    private float[] _xs;
+    private float[] _ys;
 
     public Transform xsHolder;
     public Transform ysHolder;
+    public bool IsReady { get; private set; }
 
-    private bool filled = false;
     void Update()
     {
-        if (filled) return;
+        if (IsReady) return;
         
-        xs = new float[xsHolder.childCount];
+        _xs = new float[xsHolder.childCount];
         for (int i = 0; i < xsHolder.childCount; i++)
         {
             Transform child = xsHolder.GetChild(i);
-            xs[i] = child.position.x;
+            _xs[i] = child.position.x + 0.5f; // hack
         }
         
-        ys = new float[ysHolder.childCount];
+        _ys = new float[ysHolder.childCount];
         for (int i = 0; i < ysHolder.childCount; i++)
         {
             Transform child = ysHolder.GetChild(i);
-            ys[i] = child.position.y;
+            _ys[i] = child.position.y + 0.5f; // hack
         }
 
-        if (Math.Abs(Math.Abs(xs[0]) - Math.Abs(xs[1])) > 0.001)
-            filled = true;
+        if (Math.Abs(Math.Abs(_xs[0]) - Math.Abs(_xs[1])) > 0.001)
+            IsReady = true;
+    }
+
+    public Vector2 getPositionOfCoordinates(int x, int y)
+    {
+        return new Vector2(_xs[x - 1], _ys[y - 1]);
     }
 }

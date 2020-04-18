@@ -1,15 +1,16 @@
 ﻿using System;
 using TwitchLib.Client.Events;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class FoodSpawner : MonoBehaviour
 {
     public GameObject foodPrefab;
+    public CoordinatesHolder holder;
     private TwitchChatClient _twitchChatClient;
 
     void Start()
     {
-        Instantiate(foodPrefab, new Vector2(3, 3), Quaternion.identity);
         _twitchChatClient = GetComponent<TwitchChatClient>();
         _twitchChatClient.AddOnCommandReceived(OnCommand);
     }
@@ -30,6 +31,17 @@ public class FoodSpawner : MonoBehaviour
         {
             Debug.LogWarning("Command " + command + " not recognized: " + ex.Message);
             _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
+        }
+    }
+
+    private void Update()
+    {
+        if (holder.IsReady)
+        {
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(1, 1), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(2, 2), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(3, 3), Quaternion.identity);
+            Instantiate(foodPrefab, holder.getPositionOfCoordinates(4, 4), Quaternion.identity);
         }
     }
 }
