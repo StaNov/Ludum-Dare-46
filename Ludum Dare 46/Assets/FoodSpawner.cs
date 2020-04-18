@@ -33,15 +33,4 @@ public class FoodSpawner : MonoBehaviour
             _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
         }
     }
-
-    private void Update()
-    {
-        if (holder.IsReady)
-        {
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(1, 1), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(1, 12), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(20, 1), Quaternion.identity);
-            Instantiate(foodPrefab, holder.getPositionOfCoordinates(20, 12), Quaternion.identity);
-        }
-    }
 }
