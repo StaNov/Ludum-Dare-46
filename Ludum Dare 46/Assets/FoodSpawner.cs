@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FoodSpawner : MonoBehaviour
 {
-    public GameObject _foodPrefab;
-    // Start is called before the first frame update
+    public GameObject foodPrefab;
+    
     void Start()
     {
-        Instantiate(_foodPrefab, new Vector2(3, 3), Quaternion.identity);
+        Instantiate(foodPrefab, new Vector2(3, 3), Quaternion.identity);
     }
 }
