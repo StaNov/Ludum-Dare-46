@@ -6,21 +6,18 @@ using UnityEngine;
 
 public class TwitchChatClient : MonoBehaviour
 {
-	[SerializeField] //[SerializeField] Allows the private field to show up in Unity's inspector. Way better than just making it public
-	private string _channelToConnectTo = Secrets.USERNAME_FROM_OAUTH_TOKEN;
-
 	private Client _client;
 	private string _channel;
 
 	private void Awake()
 	{
-#if UNITY_EDITOR
+#if NOT_TWITCH
 		return;
 #endif
 		ConnectionCredentials credentials = new ConnectionCredentials(Secrets.USERNAME_FROM_OAUTH_TOKEN, Secrets.OAUTH_TOKEN);
 
 		_client = new Client();
-		_client.Initialize(credentials, _channelToConnectTo);
+		_client.Initialize(credentials, Secrets.USERNAME_FROM_OAUTH_TOKEN);
 		_client.OnConnected += OnConnected;
 		_client.OnJoinedChannel += OnJoinedChannel;
 		_client.OnMessageReceived += OnMessageReceived;
@@ -44,7 +41,7 @@ public class TwitchChatClient : MonoBehaviour
 
 	public void AddOnCommandReceived(EventHandler<OnChatCommandReceivedArgs> action)
 	{
-#if UNITY_EDITOR
+#if NOT_TWITCH
 		return;
 #endif
 		_client.OnChatCommandReceived += action;
@@ -52,7 +49,7 @@ public class TwitchChatClient : MonoBehaviour
 
 	public void SendChatMessage(string message)
 	{
-#if UNITY_EDITOR
+#if NOT_TWITCH
 		return;
 #endif
 		_client.SendMessage(_channel, message);

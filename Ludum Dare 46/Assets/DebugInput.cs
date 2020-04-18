@@ -11,7 +11,7 @@ public class DebugInput : MonoBehaviour
 
     void Start()
     {
-#if !UNITY_EDITOR
+#if !NOT_TWITCH
         Destroy(GetComponentInParent<Canvas>().gameObject);
 #endif
         _inputField = GetComponent<InputField>();

@@ -12,7 +12,7 @@ public class FoodSpawner : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR
+        #if NOT_TWITCH
         debugInput.AddListener(ProcessCommand);
         #else
         _twitchChatClient = GetComponent<TwitchChatClient>();
@@ -40,7 +40,7 @@ public class FoodSpawner : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogWarning("Command " + command + " not recognized: " + ex.Message);
-            #if !UNITY_EDITOR
+            #if !NOT_TWITCH
             _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
             #endif
         }
