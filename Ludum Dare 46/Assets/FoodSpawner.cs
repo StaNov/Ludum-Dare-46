@@ -18,6 +18,11 @@ public class FoodSpawner : MonoBehaviour
 
     private void OnCommand(object sender, OnChatCommandReceivedArgs e)
     {
-        Debug.Log(e.Command.CommandText);
+        string command = e.Command.CommandText;
+        Debug.Log(command);
+
+        string[] coordinates = command.Split(',');
+        
+        Instantiate(foodPrefab, new Vector2(int.Parse(coordinates[0]), int.Parse(coordinates[1])), Quaternion.identity);
     }
 }
