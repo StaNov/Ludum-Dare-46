@@ -13,9 +13,4 @@ public class GuyMover : MonoBehaviour
     {
         _rigidbody2D.AddForce(new Vector2(1, 1) * 1.00001f, ForceMode2D.Impulse);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Destroy(other.gameObject);
-    }
 }

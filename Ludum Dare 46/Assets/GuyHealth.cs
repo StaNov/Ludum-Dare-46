@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,5 +19,10 @@ public class GuyHealth : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void AddHealth(int healthValue)
+    {
+        currentHealth = Math.Min(currentHealth + healthValue, 100);
     }
 }
