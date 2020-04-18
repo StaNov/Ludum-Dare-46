@@ -7,7 +7,7 @@ public class Duplicator : MonoBehaviour
 {
     public int count = 20;
     public Transform numberTextPrefab;
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < count; i++) {
             Transform duplicate = Instantiate(numberTextPrefab, transform);
