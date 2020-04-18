@@ -1,4 +1,6 @@
-﻿using TwitchLib.Client.Models;
+﻿using System;
+using TwitchLib.Client.Events;
+using TwitchLib.Client.Models;
 using TwitchLib.Unity;
 using UnityEngine;
 
@@ -9,7 +11,7 @@ public class TwitchChatClient : MonoBehaviour
 
 	private Client _client;
 
-	private void Start()
+	private void Awake()
 	{
 		ConnectionCredentials credentials = new ConnectionCredentials(Secrets.USERNAME_FROM_OAUTH_TOKEN, Secrets.OAUTH_TOKEN);
 
@@ -34,6 +36,11 @@ public class TwitchChatClient : MonoBehaviour
 	{
 		Debug.Log($"The bot {e.BotUsername} just joined the channel: {e.Channel}");
 		_client.SendMessage(e.Channel, "I just joined the channel! PogChamp");
+	}
+
+	public void AddOnCommandReceived(EventHandler<OnChatCommandReceivedArgs> action)
+	{
+		_client.OnChatCommandReceived += action;
 	}
 
 	private void OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
