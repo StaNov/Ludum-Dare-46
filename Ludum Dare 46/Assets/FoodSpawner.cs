@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using TwitchLib.Client.Events;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class FoodSpawner : MonoBehaviour
 {
@@ -21,8 +19,17 @@ public class FoodSpawner : MonoBehaviour
         string command = e.Command.CommandText;
         Debug.Log(command);
 
-        string[] coordinates = command.Split(',');
-        
-        Instantiate(foodPrefab, new Vector2(int.Parse(coordinates[0]), int.Parse(coordinates[1])), Quaternion.identity);
+        try
+        {
+            string[] coordinates = command.Split(',');
+
+            Instantiate(foodPrefab, new Vector2(int.Parse(coordinates[0]), int.Parse(coordinates[1])),
+                Quaternion.identity);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning("Command " + command + " not recognized: " + ex.Message);
+            _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
+        }
     }
 }

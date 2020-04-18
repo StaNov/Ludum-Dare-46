@@ -10,6 +10,7 @@ public class TwitchChatClient : MonoBehaviour
 	private string _channelToConnectTo = Secrets.USERNAME_FROM_OAUTH_TOKEN;
 
 	private Client _client;
+	private string _channel;
 
 	private void Awake()
 	{
@@ -20,13 +21,12 @@ public class TwitchChatClient : MonoBehaviour
 		_client.OnConnected += OnConnected;
 		_client.OnJoinedChannel += OnJoinedChannel;
 		_client.OnMessageReceived += OnMessageReceived;
-		_client.OnChatCommandReceived += OnChatCommandReceived;
 		_client.Connect();
 	}
 
 	private void OnConnected(object sender, TwitchLib.Client.Events.OnConnectedArgs e)
 	{
-		Debug.Log($"The bot {e.BotUsername} succesfully connected to Twitch.");
+		Debug.Log($"The bot {e.BotUsername} successfully connected to Twitch.");
 
 		if (!string.IsNullOrWhiteSpace(e.AutoJoinChannel))
 			Debug.Log($"The bot will now attempt to automatically join the channel provided when the Initialize method was called: {e.AutoJoinChannel}");
@@ -35,6 +35,7 @@ public class TwitchChatClient : MonoBehaviour
 	private void OnJoinedChannel(object sender, TwitchLib.Client.Events.OnJoinedChannelArgs e)
 	{
 		Debug.Log($"The bot {e.BotUsername} just joined the channel: {e.Channel}");
+		_channel = e.Channel;
 		_client.SendMessage(e.Channel, "I just joined the channel! PogChamp");
 	}
 
@@ -43,24 +44,13 @@ public class TwitchChatClient : MonoBehaviour
 		_client.OnChatCommandReceived += action;
 	}
 
+	public void SendChatMessage(string message)
+	{
+		_client.SendMessage(_channel, message);
+	}
+
 	private void OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
 	{
 		Debug.Log($"Message received from {e.ChatMessage.Username}: {e.ChatMessage.Message}");
-	}
-
-	private void OnChatCommandReceived(object sender, TwitchLib.Client.Events.OnChatCommandReceivedArgs e)
-	{
-		switch (e.Command.CommandText)
-		{
-			case "hello":
-				_client.SendMessage(e.Command.ChatMessage.Channel, $"Hello {e.Command.ChatMessage.DisplayName}!");
-				break;
-			case "about":
-				_client.SendMessage(e.Command.ChatMessage.Channel, "I am a Twitch bot running on TwitchLib!");
-				break;
-			default:
-				_client.SendMessage(e.Command.ChatMessage.Channel, $"Unknown chat command: {e.Command.CommandIdentifier}{e.Command.CommandText}");
-				break;
-		}
 	}
 }
