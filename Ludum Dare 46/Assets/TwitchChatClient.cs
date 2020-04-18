@@ -14,6 +14,9 @@ public class TwitchChatClient : MonoBehaviour
 
 	private void Awake()
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 		ConnectionCredentials credentials = new ConnectionCredentials(Secrets.USERNAME_FROM_OAUTH_TOKEN, Secrets.OAUTH_TOKEN);
 
 		_client = new Client();
@@ -41,11 +44,17 @@ public class TwitchChatClient : MonoBehaviour
 
 	public void AddOnCommandReceived(EventHandler<OnChatCommandReceivedArgs> action)
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 		_client.OnChatCommandReceived += action;
 	}
 
 	public void SendChatMessage(string message)
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 		_client.SendMessage(_channel, message);
 	}
 

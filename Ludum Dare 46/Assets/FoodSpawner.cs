@@ -7,17 +7,27 @@ public class FoodSpawner : MonoBehaviour
 {
     public GameObject foodPrefab;
     public CoordinatesHolder holder;
+    public DebugInput debugInput;
     private TwitchChatClient _twitchChatClient;
 
     void Start()
     {
+        #if UNITY_EDITOR
+        debugInput.AddListener(ProcessCommand);
+        #else
         _twitchChatClient = GetComponent<TwitchChatClient>();
         _twitchChatClient.AddOnCommandReceived(OnCommand);
+        #endif
     }
 
     private void OnCommand(object sender, OnChatCommandReceivedArgs e)
     {
         string command = e.Command.CommandText;
+        ProcessCommand(command);
+    }
+
+    private void ProcessCommand(string command)
+    {
         Debug.Log(command);
 
         try
@@ -30,7 +40,9 @@ public class FoodSpawner : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogWarning("Command " + command + " not recognized: " + ex.Message);
+            #if !UNITY_EDITOR
             _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
+            #endif
         }
     }
 }
