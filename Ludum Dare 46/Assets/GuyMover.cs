@@ -30,4 +30,9 @@ public class GuyMover : MonoBehaviour
 
         return number;
     }
+
+    public void Stop()
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+    }
 }

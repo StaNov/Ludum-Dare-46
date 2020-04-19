@@ -10,6 +10,8 @@ public class GuyHealth : MonoBehaviour
     public float currentHealth = 100;
     public CurrentScoreHolder currentScoreHolder;
     public CurrentPlayersHolder currentPlayersHolder;
+    public GuyMover guyMover;
+    public GameOverPanel gameOverPanel;
 
     public int healthPerSecondDecrement = 2;
 
@@ -24,7 +26,9 @@ public class GuyHealth : MonoBehaviour
                 HighScoreManager.Score = currentScoreHolder.CurrentScore;
                 HighScoreManager.Team = string.Join("\n", currentPlayersHolder.currentPlayers);
             }
-            SceneManager.LoadScene(0);
+            
+            guyMover.Stop();
+            gameOverPanel.Activate();
         }
     }
 
