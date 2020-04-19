@@ -9,6 +9,7 @@ public class FoodSpawner : MonoBehaviour
     public CoordinatesHolder holder;
     public DebugInput debugInput;
     public CurrentScoreHolder currentScoreHolder;
+    public PlayerFoodManager playerFoodManager;
     private TwitchChatClient _twitchChatClient;
 
     void Start()
@@ -48,6 +49,7 @@ public class FoodSpawner : MonoBehaviour
             GameObject food = Instantiate(foodPrefab, holder.getPositionOfCoordinates(column, row),
                 Quaternion.identity);
             food.GetComponent<Food>().currentScoreHolder = currentScoreHolder;
+            food.GetComponent<SpriteRenderer>().sprite = playerFoodManager.GetFoodForPlayer(userName);
             MusicPlayer.Instance.PlayFoodPlop();
         }
         catch (Exception ex)

@@ -455,6 +455,7 @@ MonoBehaviour:
   holder: {fileID: 1244228803}
   debugInput: {fileID: 794991273}
   currentScoreHolder: {fileID: 1906297298}
+  playerFoodManager: {fileID: 863053958}
 --- !u!4 &152585470
 Transform:
   m_ObjectHideFlags: 0
@@ -1986,6 +1987,54 @@ Transform:
   - {fileID: 1842563395}
   m_Father: {fileID: 1244228802}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &863053957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863053959}
+  - component: {fileID: 863053958}
+  m_Layer: 0
+  m_Name: PlayerFoodManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &863053958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863053957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158d3d050b441bb6fa9b88b9548a4cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodSprites:
+  - {fileID: 21300000, guid: 0eb118e9a1617cfa9b49e6f268bc8db3, type: 3}
+  - {fileID: 21300000, guid: 609801da87d20fa3389b461621acd1c9, type: 3}
+  - {fileID: 21300000, guid: e283c65b6185c4e0db656aa412849983, type: 3}
+  - {fileID: 21300000, guid: bb9e5be56430617c793c166a29efccb2, type: 3}
+--- !u!4 &863053959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863053957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &922892908
 GameObject:
