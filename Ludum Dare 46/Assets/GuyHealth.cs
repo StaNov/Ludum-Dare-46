@@ -8,6 +8,8 @@ using UnityEngine.Serialization;
 public class GuyHealth : MonoBehaviour
 {
     public float currentHealth = 100;
+    public CurrentScoreHolder currentScoreHolder;
+    public CurrentPlayersHolder currentPlayersHolder;
 
     public int healthPerSecondDecrement = 2;
 
@@ -17,6 +19,11 @@ public class GuyHealth : MonoBehaviour
 
         if (currentHealth < 0)
         {
+            if (currentScoreHolder.CurrentScore > HighScoreManager.Score)
+            {
+                HighScoreManager.Score = currentScoreHolder.CurrentScore;
+                HighScoreManager.Team = string.Join("\n", currentPlayersHolder.currentPlayers);
+            }
             SceneManager.LoadScene(0);
         }
     }
