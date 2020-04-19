@@ -6,6 +6,28 @@ using UnityEngine;
 
 public class TwitchChatClient : MonoBehaviour
 {
+	public static TwitchChatClient Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				Initialize();
+			}
+
+			return _instance;
+		}
+	}
+
+	private static void Initialize()
+	{
+		GameObject gameObject = new GameObject("TwitchChatClient");
+		_instance = gameObject.AddComponent<TwitchChatClient>();
+		DontDestroyOnLoad(gameObject);
+	}
+
+	private static TwitchChatClient _instance;
+
 	private Client _client;
 	private string _channel;
 
@@ -45,6 +67,14 @@ public class TwitchChatClient : MonoBehaviour
 		return;
 #endif
 		_client.OnChatCommandReceived += action;
+	}
+	
+	public void RemoveOnCommandReceived(EventHandler<OnChatCommandReceivedArgs> action)
+	{
+#if NOT_TWITCH
+		return;
+#endif
+		_client.OnChatCommandReceived -= action;
 	}
 
 	public void SendChatMessage(string message)
