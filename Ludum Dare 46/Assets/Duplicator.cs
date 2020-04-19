@@ -7,11 +7,22 @@ public class Duplicator : MonoBehaviour
 {
     public int count = 20;
     public Transform numberTextPrefab;
+    public bool letters;
     void Awake()
     {
         for (int i = 0; i < count; i++) {
             Transform duplicate = Instantiate(numberTextPrefab, transform);
-            duplicate.GetComponent<Text>().text = (i + 1).ToString().PadLeft(2);
+            duplicate.GetComponent<Text>().text = GetText(i).PadLeft(2);
         }
+    }
+
+    private string GetText(int i)
+    {
+        if (!letters)
+        {
+            return (count - i).ToString();
+        }
+
+        return ((char) ('A' + i)).ToString();
     }
 }

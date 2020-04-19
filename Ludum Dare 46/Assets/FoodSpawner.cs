@@ -37,9 +37,15 @@ public class FoodSpawner : MonoBehaviour
     {
         try
         {
-            string[] coordinates = command.Split(',');
+            if (command.Length < 2 || command.Length > 3)
+            {
+                throw new Exception("Bad format");
+            }
 
-            GameObject food = Instantiate(foodPrefab, holder.getPositionOfCoordinates(int.Parse(coordinates[0]), int.Parse(coordinates[1])),
+            char column = command[0];
+            int row = int.Parse(command.Substring(1));
+
+            GameObject food = Instantiate(foodPrefab, holder.getPositionOfCoordinates(column, row),
                 Quaternion.identity);
             food.GetComponent<Food>().currentScoreHolder = currentScoreHolder;
         }

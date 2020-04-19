@@ -805,6 +805,7 @@ MonoBehaviour:
   count: 12
   numberTextPrefab: {fileID: 9108965424999255347, guid: dabf41af7e1e089c484e979ec915ef19,
     type: 3}
+  letters: 0
 --- !u!114 &536065760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1350,7 @@ MonoBehaviour:
   count: 12
   numberTextPrefab: {fileID: 9108965424999255347, guid: dabf41af7e1e089c484e979ec915ef19,
     type: 3}
+  letters: 0
 --- !u!1 &953110678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2103,7 @@ MonoBehaviour:
   count: 15
   numberTextPrefab: {fileID: 9108965424999255347, guid: dabf41af7e1e089c484e979ec915ef19,
     type: 3}
+  letters: 1
 --- !u!114 &1501754989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2353,6 +2356,7 @@ MonoBehaviour:
   count: 15
   numberTextPrefab: {fileID: 9108965424999255347, guid: dabf41af7e1e089c484e979ec915ef19,
     type: 3}
+  letters: 1
 --- !u!114 &1586967572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3148,7 @@ PrefabInstance:
     - target: {fileID: 4734795217776753131, guid: f4243e6842727c6e599dd746177539c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.61
       objectReference: {fileID: 0}
     - target: {fileID: 4734795217776753131, guid: f4243e6842727c6e599dd746177539c5,
         type: 3}

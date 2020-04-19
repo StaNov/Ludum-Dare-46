@@ -32,8 +32,8 @@ public class CoordinatesHolder : MonoBehaviour
             IsReady = true;
     }
 
-    public Vector2 getPositionOfCoordinates(int x, int y)
+    public Vector2 getPositionOfCoordinates(char x, int y)
     {
-        return new Vector2(_xs[x - 1], _ys[y - 1]);
+        return new Vector2(_xs[char.ToLower(x) - 'a'], _ys[_ys.Length - y]);
     }
 }
