@@ -13,7 +13,7 @@ public class FoodSpawner : MonoBehaviour
     void Start()
     {
         #if NOT_TWITCH
-        debugInput.AddListener(ProcessCommand);
+        debugInput.AddListener((command) => ProcessCommand(command));
         #else
         _twitchChatClient = TwitchChatClient.Instance;
         _twitchChatClient.AddOnCommandReceived(OnCommand);
