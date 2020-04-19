@@ -11,7 +11,7 @@ public class GuyMover : MonoBehaviour
 
     void Start()
     {
-        _rigidbody2D.AddForce(new Vector2(RandomDirection(), RandomDirection()).normalized * 1.5f, ForceMode2D.Impulse);
+        _rigidbody2D.AddForce(new Vector2(RandomDirection(), RandomDirection()), ForceMode2D.Impulse);
     }
 
     public void IncreaseVelocity()
@@ -21,7 +21,7 @@ public class GuyMover : MonoBehaviour
 
     private float RandomDirection()
     {
-        float number = Random.Range(0.9f, 1.1f);
+        float number = Random.Range(1.01f, 1.2f);
 
         if (Random.Range(0f, 1f) > 0.5f)
         {
