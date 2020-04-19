@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class DebugInput : MonoBehaviour
@@ -21,6 +23,7 @@ public class DebugInput : MonoBehaviour
     {
         _processCommand(_inputField.text);
         _inputField.text = "";
+        _inputField.ActivateInputField();
     }
 
     public void AddListener(Action<string> processCommand)

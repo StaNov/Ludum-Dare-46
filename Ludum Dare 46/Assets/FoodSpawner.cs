@@ -20,10 +20,12 @@ public class FoodSpawner : MonoBehaviour
         #endif
     }
 
+    #if !NOT_TWITCH
     private void OnDestroy()
     {
         _twitchChatClient.RemoveOnCommandReceived(OnCommand);
     }
+    #endif
 
     private void OnCommand(object sender, OnChatCommandReceivedArgs e)
     {
@@ -33,8 +35,6 @@ public class FoodSpawner : MonoBehaviour
 
     private void ProcessCommand(string command)
     {
-        Debug.Log(command);
-
         try
         {
             string[] coordinates = command.Split(',');
