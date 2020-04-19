@@ -31,6 +31,27 @@ public class FoodSpawner : MonoBehaviour
 
     private void OnCommand(object sender, OnChatCommandReceivedArgs e)
     {
+        if (e.Command.CommandText.ToLower() == "help")
+        {
+            _twitchChatClient.SendChatMessage("How to play: Keep the guy alive by putting food in his path! Type '!d3' to put food on D3 cell. Type '!food' to change the food you place.");
+            return;
+        }
+        
+        if (e.Command.CommandText.ToLower() == "food")
+        {
+            if (e.Command.ArgumentsAsString.Length == 0)
+            {
+                _twitchChatClient.SendChatMessage("You can choose from !food icecream, !food candy, !food cupcake and !food heart.");
+                return;
+            }
+            
+            playerFoodManager.SetFoodForPlayer(
+                e.Command.ChatMessage.Username, 
+                e.Command.ArgumentsAsString.ToLower()
+            );
+            return;
+        }
+        
         ProcessCommand(e.Command.CommandText, e.Command.ChatMessage.Username);
     }
 
@@ -56,7 +77,7 @@ public class FoodSpawner : MonoBehaviour
         {
             Debug.LogWarning("Command '" + command + "' not recognized: " + ex.Message);
             #if !NOT_TWITCH
-            _twitchChatClient.SendChatMessage(userName + ": Command " + command + " not recognized. Correct format is '!xx,yy'.");
+            _twitchChatClient.SendChatMessage(userName + ": Command " + command + " not recognized. Correct format is '!a1' or '!f11'.");
             #endif
         }
     }

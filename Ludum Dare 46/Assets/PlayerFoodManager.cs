@@ -17,4 +17,28 @@ public class PlayerFoodManager : MonoBehaviour
 
         return foodSprites[i];
     }
+
+    public void SetFoodForPlayer(string playerName, string foodName)
+    {
+        int i = 3;
+
+        if (foodName.Equals("candy"))
+        {
+            i = 0;
+        }
+        else if (foodName.Equals("cupcake"))
+        {
+            i = 1;
+        }
+        else if (foodName.Equals("heart"))
+        {
+            i = 2;
+        }
+        else if (foodName.Equals("icecream"))
+        {
+            i = 3;
+        }
+        
+        PlayerPrefs.SetInt("Food_" + playerName, i);
+    }
 }
