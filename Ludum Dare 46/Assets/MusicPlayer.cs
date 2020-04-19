@@ -7,9 +7,10 @@ using Random = UnityEngine.Random;
 
 public class MusicPlayer : MonoBehaviour
 {
-    public static MusicPlayer _instance;
+    public static MusicPlayer Instance;
 
     public AudioClip[] foodPlops;
+    public AudioClip[] yums;
 
     private AudioSource _kachon;
     private AudioSource _kytara;
@@ -19,9 +20,9 @@ public class MusicPlayer : MonoBehaviour
 
     void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -48,5 +49,10 @@ public class MusicPlayer : MonoBehaviour
     public void PlayFoodPlop()
     {
         _effects.PlayOneShot(foodPlops[Random.Range(0, foodPlops.Length - 1)]);
+    }
+
+    public void PlayYum()
+    {
+        _effects.PlayOneShot(yums[Random.Range(0, yums.Length - 1)]);
     }
 }

@@ -48,7 +48,7 @@ public class FoodSpawner : MonoBehaviour
             GameObject food = Instantiate(foodPrefab, holder.getPositionOfCoordinates(column, row),
                 Quaternion.identity);
             food.GetComponent<Food>().currentScoreHolder = currentScoreHolder;
-            MusicPlayer._instance.PlayFoodPlop();
+            MusicPlayer.Instance.PlayFoodPlop();
         }
         catch (Exception ex)
         {

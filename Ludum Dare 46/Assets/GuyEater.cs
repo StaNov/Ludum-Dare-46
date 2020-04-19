@@ -14,5 +14,6 @@ public class GuyEater : MonoBehaviour
         Destroy(other.gameObject);
         currentScoreHolder.CurrentScore += 5;
         guyMover.IncreaseVelocity();
+        MusicPlayer.Instance.PlayYum();
     }
 }

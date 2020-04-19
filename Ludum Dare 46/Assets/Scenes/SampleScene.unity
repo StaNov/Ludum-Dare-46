@@ -2731,6 +2731,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48a9b2f1c2a00a2d8a3472338df83fb3, type: 3}
   - {fileID: 8300000, guid: 89dcf4877d95c6aa1b37953ad05a3740, type: 3}
   - {fileID: 8300000, guid: 61b86520a68cc3ac7ace292a5be605b3, type: 3}
+  yums:
+  - {fileID: 8300000, guid: 7d4277c64593742cf9f9a4f078cc879f, type: 3}
+  - {fileID: 8300000, guid: 3ee1cfc21bf0a87d8b0c36c87c93043b, type: 3}
+  - {fileID: 8300000, guid: a42278f7c8d57f8faa0270a6c22ab38d, type: 3}
+  - {fileID: 8300000, guid: 31e58ee9f7b61bcd3b200ef812bffca8, type: 3}
 --- !u!82 &1312440566
 AudioSource:
   m_ObjectHideFlags: 0
