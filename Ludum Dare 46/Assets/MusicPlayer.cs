@@ -55,4 +55,10 @@ public class MusicPlayer : MonoBehaviour
     {
         _effects.PlayOneShot(yums[Random.Range(0, yums.Length - 1)]);
     }
+
+    public void SetMusicByHealth(float currentHealth)
+    {
+        _kazoo.volume = Mathf.Clamp01((currentHealth * 2f) / 100f);
+        _kytara.volume = Mathf.Clamp01((currentHealth * 4f) / 100f);
+    }
 }

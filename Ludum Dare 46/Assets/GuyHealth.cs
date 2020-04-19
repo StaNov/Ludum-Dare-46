@@ -15,14 +15,17 @@ public class GuyHealth : MonoBehaviour
 
     void Update()
     {
-        currentHealth -= healthPerSecondDecrement * Time.deltaTime;
-
         if (currentHealth < 0)
         {
             guyMover.Stop();
             gameOverPanel.Activate();
             gameObject.SetActive(false);
+            return;
         }
+        
+        currentHealth -= healthPerSecondDecrement * Time.deltaTime;
+
+        MusicPlayer.Instance.SetMusicByHealth(currentHealth);
     }
 
     public void AddHealth(int healthValue)

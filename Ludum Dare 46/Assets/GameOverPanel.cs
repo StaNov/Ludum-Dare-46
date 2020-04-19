@@ -38,7 +38,7 @@ public class GameOverPanel : MonoBehaviour
 
     private IEnumerator CountDownAndRestart()
     {
-        float restartTime = Time.time + 10;
+        float restartTime = Time.time + 5;
         string template = restartMessage.text;
 
         while (Time.time < restartTime)
