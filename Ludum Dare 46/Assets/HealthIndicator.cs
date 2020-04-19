@@ -8,16 +8,20 @@ using UnityEngine.UIElements;
 public class HealthIndicator : MonoBehaviour
 {
     public GuyHealth guyHealth;
+    public RectTransform healthBar;
 
-    private Text _textField;
+    private float _initHealthBarWidth;
+
     void Start()
     {
-        _textField = GetComponent<Text>();
+        _initHealthBarWidth = healthBar.rect.width;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _textField.text = Mathf.FloorToInt(guyHealth.currentHealth) + " / 100";
+        healthBar.sizeDelta = new Vector2(
+            guyHealth.currentHealth / 100 * _initHealthBarWidth,
+            healthBar.sizeDelta.y
+        );
     }
 }

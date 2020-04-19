@@ -21,7 +21,7 @@ public class GuyMover : MonoBehaviour
 
     private float RandomDirection()
     {
-        float number = Random.Range(1.01f, 1.2f);
+        float number = Random.Range(1.01f, 1.3f);
 
         if (Random.Range(0f, 1f) > 0.5f)
         {

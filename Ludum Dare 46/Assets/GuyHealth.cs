@@ -8,8 +8,6 @@ using UnityEngine.Serialization;
 public class GuyHealth : MonoBehaviour
 {
     public float currentHealth = 100;
-    public CurrentScoreHolder currentScoreHolder;
-    public CurrentPlayersHolder currentPlayersHolder;
     public GuyMover guyMover;
     public GameOverPanel gameOverPanel;
 
@@ -21,14 +19,9 @@ public class GuyHealth : MonoBehaviour
 
         if (currentHealth < 0)
         {
-            if (currentScoreHolder.CurrentScore > HighScoreManager.Score)
-            {
-                HighScoreManager.Score = currentScoreHolder.CurrentScore;
-                HighScoreManager.Team = string.Join("\n", currentPlayersHolder.currentPlayers);
-            }
-            
             guyMover.Stop();
             gameOverPanel.Activate();
+            gameObject.SetActive(false);
         }
     }
 

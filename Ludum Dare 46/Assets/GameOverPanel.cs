@@ -11,6 +11,7 @@ public class GameOverPanel : MonoBehaviour
     public Text restartMessage;
     public Text highScoreText;
     public CurrentScoreHolder currentScoreHolder;
+    public CurrentPlayersHolder currentPlayersHolder;
 
     private void Awake()
     {
@@ -21,9 +22,14 @@ public class GameOverPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         
-        if (currentScoreHolder.CurrentScore <= HighScoreManager.Score)
+        if (currentScoreHolder.CurrentScore > HighScoreManager.Score)
         {
-            highScoreText.gameObject.SetActive(false);            
+            HighScoreManager.Score = currentScoreHolder.CurrentScore;
+            HighScoreManager.Team = string.Join("\n", currentPlayersHolder.currentPlayers);
+        }
+        else
+        {
+            highScoreText.gameObject.SetActive(false);        
         }
         
         pointMessage.text = pointMessage.text.Replace("XXX", currentScoreHolder.CurrentScore.ToString());
