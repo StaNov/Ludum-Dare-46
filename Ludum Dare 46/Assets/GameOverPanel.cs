@@ -9,6 +9,7 @@ public class GameOverPanel : MonoBehaviour
 {
     public Text pointMessage;
     public Text restartMessage;
+    public Text highScoreText;
     public CurrentScoreHolder currentScoreHolder;
 
     private void Awake()
@@ -19,13 +20,19 @@ public class GameOverPanel : MonoBehaviour
     public void Activate()
     {
         gameObject.SetActive(true);
+        
+        if (currentScoreHolder.CurrentScore <= HighScoreManager.Score)
+        {
+            highScoreText.gameObject.SetActive(false);            
+        }
+        
         pointMessage.text = pointMessage.text.Replace("XXX", currentScoreHolder.CurrentScore.ToString());
         StartCoroutine(CountDownAndRestart());
     }
 
     private IEnumerator CountDownAndRestart()
     {
-        float restartTime = Time.time + 5;
+        float restartTime = Time.time + 10;
         string template = restartMessage.text;
 
         while (Time.time < restartTime)
