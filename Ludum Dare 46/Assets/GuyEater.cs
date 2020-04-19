@@ -5,6 +5,7 @@ using UnityEngine;
 public class GuyEater : MonoBehaviour
 {
     public GuyHealth guyHealth;
+    public GuyMover guyMover;
     public CurrentScoreHolder currentScoreHolder;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -12,5 +13,6 @@ public class GuyEater : MonoBehaviour
         guyHealth.AddHealth(other.GetComponent<Food>().healthValue);
         Destroy(other.gameObject);
         currentScoreHolder.CurrentScore += 5;
+        guyMover.IncreaseVelocity();
     }
 }

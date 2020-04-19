@@ -13,4 +13,9 @@ public class GuyMover : MonoBehaviour
     {
         _rigidbody2D.AddForce(new Vector2(1, 1) * 1.00001f, ForceMode2D.Impulse);
     }
+
+    public void IncreaseVelocity()
+    {
+        _rigidbody2D.velocity = _rigidbody2D.velocity * 1.1f;
+    }
 }
