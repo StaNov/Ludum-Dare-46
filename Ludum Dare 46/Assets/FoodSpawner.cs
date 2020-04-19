@@ -29,11 +29,10 @@ public class FoodSpawner : MonoBehaviour
 
     private void OnCommand(object sender, OnChatCommandReceivedArgs e)
     {
-        string command = e.Command.CommandText;
-        ProcessCommand(command);
+        ProcessCommand(e.Command.CommandText, e.Command.ChatMessage.Username);
     }
 
-    private void ProcessCommand(string command)
+    private void ProcessCommand(string command, string userName=null)
     {
         try
         {
@@ -44,9 +43,9 @@ public class FoodSpawner : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogWarning("Command " + command + " not recognized: " + ex.Message);
+            Debug.LogWarning("Command '" + command + "' not recognized: " + ex.Message);
             #if !NOT_TWITCH
-            _twitchChatClient.SendChatMessage("Command " + command + " not recognized.");
+            _twitchChatClient.SendChatMessage(userName + ": Command " + command + " not recognized. Correct format is '!xx,yy'.");
             #endif
         }
     }
