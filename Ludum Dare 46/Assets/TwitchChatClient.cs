@@ -30,11 +30,9 @@ public class TwitchChatClient : MonoBehaviour
 	private Client _client;
 	private string _channel;
 
+	#if !NOT_TWITCH
 	private void Awake()
 	{
-#if NOT_TWITCH
-		return;
-#endif
 		ConnectionCredentials credentials = new ConnectionCredentials(Secrets.USERNAME_FROM_OAUTH_TOKEN, Secrets.OAUTH_TOKEN);
 
 		_client = new Client();
@@ -44,6 +42,7 @@ public class TwitchChatClient : MonoBehaviour
 		_client.OnMessageReceived += OnMessageReceived;
 		_client.Connect();
 	}
+	#endif
 
 	private void OnConnected(object sender, TwitchLib.Client.Events.OnConnectedArgs e)
 	{
