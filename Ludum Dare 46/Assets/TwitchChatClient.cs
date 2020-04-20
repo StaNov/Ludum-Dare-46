@@ -23,7 +23,6 @@ public class TwitchChatClient : MonoBehaviour
 	{
 		GameObject gameObject = new GameObject("TwitchChatClient");
 		_instance = gameObject.AddComponent<TwitchChatClient>();
-		DontDestroyOnLoad(gameObject);
 	}
 
 	private static TwitchChatClient _instance;
@@ -58,7 +57,6 @@ public class TwitchChatClient : MonoBehaviour
 	{
 		Debug.Log($"The bot {e.BotUsername} just joined the channel: {e.Channel}");
 		_channel = e.Channel;
-		_client.SendMessage(e.Channel, "I just joined the channel! PogChamp");
 	}
 
 	public void AddOnCommandReceived(EventHandler<OnChatCommandReceivedArgs> action)
